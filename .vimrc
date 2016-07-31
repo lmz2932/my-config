@@ -47,10 +47,14 @@ let g:SimpylFold_docstring_preview=1
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
-
-" Python format and syntax check look pretty
-let python_highlight_all=1
-syntax on
+" Mapping C-g to toggle NERDTreeTabs
+map <C-g> :NERDTreeTabsToggle<CR>
+" Start Nerdtree automatically
+let g:nerdtree_tabs_open_on_console_startup=1
+" Don't close nerdtreetabs when it is the last window
+let g:nerdtree_tabs_autoclose=0
+" Files that nerdtree will ignore
+let NERDTreeIgnore = ['\.pyc$', '\~$']
 
 " Configuration for scrooloose/syntastic plugin
 " IMPORTANT!! $ sudo pip install flake8
@@ -63,16 +67,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 autocmd BufWritePost *.py call Flake8()
 
-" Start Nerdtree automatically
-let g:nerdtree_tabs_open_on_console_startup=1
-" Don't close nerdtreetabs when it is the last window
-let g:nerdtree_tabs_autoclose=0
-" Files that nerdtree will ignore
-let NERDTreeIgnore = ['\.pyc$', '\~$']
-" Mapping C-g to toggle NERDTreeTabs
-map <C-g> :NERDTreeTabsToggle<CR>
-
-" YCM: close the preview window after completeion automatically
 let g:ycm_autoclose_preview_window_after_completion = 1
 " YCM: close the preview window after leave insertion mode automatically
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -95,6 +89,11 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+" YCM: close the preview window after completeion automatically
+" Python format and syntax check look pretty
+let python_highlight_all=1
+syntax enable
 
 " Standard format support
 set expandtab
