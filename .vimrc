@@ -48,30 +48,6 @@ autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 
-" YCM: close the preview window after completeion automatically
-let g:ycm_autoclose_preview_window_after_completion = 1
-" YCM: close the preview window after leave insertion mode automatically
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" YCM shortcuts
-map <C-n>  :YcmCompleter GoToDefinition<CR>
-" map <C-?>  :YcmCompleter GoToDeclaration<CR>
-map <C-m>  :YcmCompleter GoToReferences<CR>
-map <C-p>  :YcmCompleter GetDoc<CR>
-" invoke omni completion by pressing ctrl+/ (ctrl+/ is recognized as C-_)        
-inoremap <unique> <C-_> <C-X><C-O><C-P>
-" omnicomplete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-" python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
 " Python format and syntax check look pretty
 let python_highlight_all=1
 syntax on
@@ -95,6 +71,30 @@ let g:nerdtree_tabs_autoclose=0
 let NERDTreeIgnore = ['\.pyc$', '\~$']
 " Mapping C-g to toggle NERDTreeTabs
 map <C-g> :NERDTreeTabsToggle<CR>
+
+" YCM: close the preview window after completeion automatically
+let g:ycm_autoclose_preview_window_after_completion = 1
+" YCM: close the preview window after leave insertion mode automatically
+let g:ycm_autoclose_preview_window_after_insertion = 1
+" YCM shortcuts
+map <C-n>  :YcmCompleter GoToDefinition<CR>
+" map <C-?>  :YcmCompleter GoToDeclaration<CR>
+map <C-m>  :YcmCompleter GoToReferences<CR>
+map <C-p>  :YcmCompleter GetDoc<CR>
+" invoke omni completion by pressing ctrl+/ (ctrl+/ is recognized as C-_)        
+inoremap <unique> <C-_> <C-X><C-O><C-P>
+" omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+" python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " Standard format support
 set expandtab
