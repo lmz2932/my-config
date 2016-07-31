@@ -8,7 +8,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 " Code folding plugin
 Plugin 'tmhedberg/SimpylFold'
 " Color Scheme
@@ -33,19 +33,12 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Change position of the window of :sp & :vsp
-set splitbelow
-set splitright
-
-" Show line number
-set nu
-
-" Ensure one line doesn’t go beyond 80 characters
-set textwidth=79
-
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" Code folding shortcut with the <space> key
+nnoremap <space> za
 
 " Show docstring for folded code
 let g:SimpylFold_docstring_preview=1
@@ -54,9 +47,6 @@ let g:SimpylFold_docstring_preview=1
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
-" Vim file formatting
-set encoding=utf-8
-set fileformat=unix
 
 " YCM: close the preview window after completeion automatically
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -69,6 +59,8 @@ map <C-m>  :YcmCompleter GoToReferences<CR>
 map <C-p>  :YcmCompleter GetDoc<CR>
 " invoke omni completion by pressing ctrl+/ (ctrl+/ is recognized as C-_)        
 inoremap <unique> <C-_> <C-X><C-O><C-P>
+" omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 " python with virtualenv support
 py << EOF
@@ -93,6 +85,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+autocmd BufWritePost *.py call Flake8()
 
 " Start Nerdtree automatically
 let g:nerdtree_tabs_open_on_console_startup=1
@@ -108,7 +101,25 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+" Vim file formatting
+set encoding=utf-8
+set fileformat=unix
+
 set autoindent
+
+" Ensure one line doesn’t go beyond 80 characters
+set textwidth=79
+
+" Show line number
+set nu
+
+" Change position of the window of :sp & :vsp
+set splitbelow
+set splitright
+
+
+
 
 if has('gui_running')
     set background=dark
