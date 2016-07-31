@@ -70,10 +70,10 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " YCM: close the preview window after leave insertion mode automatically
 let g:ycm_autoclose_preview_window_after_insertion = 1
 " YCM shortcuts
-map <C-n>  :YcmCompleter GoToDefinition<CR>
-" map <C-?>  :YcmCompleter GoToDeclaration<CR>
-map <C-m>  :YcmCompleter GoToReferences<CR>
-map <C-p>  :YcmCompleter GetDoc<CR>
+map <leader>d  :YcmCompleter GoToDefinition<CR>
+map <leader>n  :YcmCompleter GoToDeclaration<CR>
+map <leader>m  :YcmCompleter GoToReferences<CR>
+map <leader>p  :YcmCompleter GetDoc<CR>
 " invoke omni completion by pressing ctrl+/ (ctrl+/ is recognized as C-_)        
 inoremap <unique> <C-_> <C-X><C-O><C-P>
 " omnicomplete
