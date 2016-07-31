@@ -91,11 +91,12 @@ EOF
 
 " YCM: close the preview window after completeion automatically
 " Python format and syntax check look pretty
-let python_highlight_all=1
 syntax enable
+let python_highlight_all=1
 
 " Standard format support
 set expandtab
+set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -103,7 +104,6 @@ set softtabstop=4
 " Vim file formatting
 set encoding=utf-8
 set fileformat=unix
-
 set autoindent
 
 " Ensure one line doesn’t go beyond 80 characters
@@ -119,9 +119,7 @@ set background=dark
 set splitbelow
 set splitright
 
-
-
-
+" color scheme setting
 if has('gui_running')
     " colorscheme solarized
     " call togglebg#map("<F5>")
