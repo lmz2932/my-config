@@ -89,6 +89,13 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+" Powerline status configuration
+set guifont=Meslo\ LG\ L\ for\ Powerline
+set t_Co=256
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+set fillchars+=stl:\ ,stlnc:\
+
 " YCM: close the preview window after completeion automatically
 " Python format and syntax check look pretty
 syntax enable
@@ -111,9 +118,9 @@ set textwidth=79
 
 " Show line number
 set nu
+set ruler
 set hlsearch
 set incsearch
-set background=dark
 
 " Change position of the window of :sp & :vsp
 set splitbelow
@@ -121,6 +128,7 @@ set splitright
 
 " color scheme setting
 if has('gui_running')
+    set background=dark
     " colorscheme solarized
     " call togglebg#map("<F5>")
     colorscheme molokai
