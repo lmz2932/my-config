@@ -65,7 +65,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-autocmd BufWritePost *.py call Flake8()
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 " YCM: close the preview window after leave insertion mode automatically
@@ -112,6 +111,9 @@ set textwidth=79
 
 " Show line number
 set nu
+set hlsearch
+set incsearch
+set background=dark
 
 " Change position of the window of :sp & :vsp
 set splitbelow
@@ -121,7 +123,6 @@ set splitright
 
 
 if has('gui_running')
-    set background=dark
     " colorscheme solarized
     " call togglebg#map("<F5>")
     colorscheme molokai
