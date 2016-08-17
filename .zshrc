@@ -1,12 +1,12 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=/home/marsloo/.oh-my-zsh
+#  Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-# ZSH_THEME="gnzh"
+# ZSH_THEME="agnoster"
+ZSH_THEME="gnzh"
 
 # Don't show update prompt
 DISABLE_UPDATE_PROMPT=true
@@ -52,7 +52,7 @@ DISABLE_UPDATE_PROMPT=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump)
+plugins=(git autojump sudo httpie colored-man-pages)
 
 # User configuration
 
@@ -63,6 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -94,15 +95,17 @@ alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
+alias -s jpg='imgcat'
 
 # Other environment variables
 # export PROJECT_HOME=/home/marsloo/workspace
-export PROJECT_HOME=/home/marsloo/learnspace
-export WORKON_HOME=/home/marsloo/Envs
+export PROJECT_HOME=$HOME/learnspace
+export WORKON_HOME=$HOME/Envs
 if [ ! -d $PROJECT_HOME ]; then
     mkdir -p $PROJECT_HOME
 fi
 if [ ! -d $WORKON_HOME ]; then
     mkdir -p $WORKON_HOME
-    source /usr/local/bin/virtualenvwrapper.sh
 fi
+source /usr/local/bin/virtualenvwrapper.sh
+source ~/.iterm2_shell_integration.`basename $SHELL`

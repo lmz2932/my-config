@@ -21,7 +21,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " Auto indent for Python
 Plugin 'vim-scripts/indentpython.vim'
 " Auto complete plugin
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " Syntax check in Vim
 Plugin 'scrooloose/syntastic'
 " PEP8 standard checking for Python
@@ -69,6 +69,7 @@ let g:syntastic_check_on_wq = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 " YCM: close the preview window after leave insertion mode automatically
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_python_binary_path = 'python'
 " YCM shortcuts
 map <leader>d  :YcmCompleter GoToDefinition<CR>
 map <leader>n  :YcmCompleter GoToDeclaration<CR>
