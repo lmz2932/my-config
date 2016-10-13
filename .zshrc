@@ -88,7 +88,10 @@ alias ll='ls -lrth'
 alias la='ls -lrtha'
 alias grep="grep --color=auto"
 alias vi='vim'
-alias -s py=vim
+alias mysql='/usr/local/mysql/bin/mysql'
+alias mysqladm='/usr/local/mysql/bin/mysqladmin'
+alias mysqld='/usr/local/mysql/bin/mysqld'
+# alias -s py=vim
 alias -s c=vim
 alias -s txt=vim
 alias -s gz='tar -xzvf'
@@ -96,6 +99,8 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias -s jpg='imgcat'
+alias -s gif='imgcat'
+alias -s png='imgcat'
 
 # Other environment variables
 # export PROJECT_HOME=/home/marsloo/workspace
@@ -109,3 +114,6 @@ if [ ! -d $WORKON_HOME ]; then
 fi
 source /usr/local/bin/virtualenvwrapper.sh
 source ~/.iterm2_shell_integration.`basename $SHELL`
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
