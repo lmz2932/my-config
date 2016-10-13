@@ -20,6 +20,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 " Auto indent for Python
 Plugin 'vim-scripts/indentpython.vim'
+" Javascript plugin (syntax and format)
+Plugin 'pangloss/vim-javascript'
 " Auto complete plugin
 Plugin 'Valloric/YouCompleteMe'
 " Syntax check in Vim
