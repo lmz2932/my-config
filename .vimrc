@@ -12,8 +12,6 @@ Plugin 'gmarik/Vundle.vim'
 " Code folding plugin
 Plugin 'tmhedberg/SimpylFold'
 " Color Scheme
-Plugin 'tomasr/molokai'
-Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 " NerdTree: A tree explorer plugin for vim
 Plugin 'scrooloose/nerdtree'
@@ -38,13 +36,10 @@ filetype plugin indent on    " required
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-
 " Code folding shortcut with the <space> key
 nnoremap <space> za
-
 " Show docstring for folded code
 let g:SimpylFold_docstring_preview=1
-
 " Avoid Issue #27 for SimpylFold
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
@@ -56,7 +51,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " Don't close nerdtreetabs when it is the last window
 let g:nerdtree_tabs_autoclose=0
 " Files that nerdtree will ignore
-let NERDTreeIgnore = ['\.pyc$', '\~$']
+let NERDTreeIgnore = ['\.pyc$', '\~$', '\.swp$']
 
 " Configuration for scrooloose/syntastic plugin
 " IMPORTANT!! $ sudo pip install flake8
@@ -68,19 +63,29 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" YouCompleteMe configuration
+" close the preview window after accepts the offered completion string
 let g:ycm_autoclose_preview_window_after_completion = 1
 " YCM: close the preview window after leave insertion mode automatically
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_python_binary_path = 'python'
-" YCM shortcuts
-map <leader>d  :YcmCompleter GoToDefinition<CR>
-map <leader>n  :YcmCompleter GoToDeclaration<CR>
-map <leader>m  :YcmCompleter GoToReferences<CR>
-map <leader>p  :YcmCompleter GetDoc<CR>
+" YCM shortcuts, <leader> represents for '\'
+nnoremap <leader>n :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>m :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+nnoremap <leader>d :YcmCompleter GetDoc<CR>
+nnoremap <leader>l :YcmDiags<CR>
 " invoke omni completion by pressing ctrl+/ (ctrl+/ is recognized as C-_)        
 inoremap <unique> <C-_> <C-X><C-O><C-P>
 " omnicomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+" auto-complete even in comments
+let g:ycm_complete_in_comments = 1
+" auto-complete when typing in string
+let g:ycm_complete_in_strings = 1
+" invoke auto-complete forcely by Ctrl + a
+let g:ycm_key_invoke_completion = '<C-a>'
 
 " python with virtualenv support
 py << EOF
@@ -93,13 +98,11 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 " Powerline status configuration
-set guifont=Meslo\ LG\ L\ for\ Powerline
 set t_Co=256
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
 
-" YCM: close the preview window after completeion automatically
 " Python format and syntax check look pretty
 syntax enable
 let python_highlight_all=1
@@ -129,12 +132,6 @@ set incsearch
 set splitbelow
 set splitright
 
-" color scheme setting
-if has('gui_running')
-    set background=dark
-    " colorscheme solarized
-    " call togglebg#map("<F5>")
-    colorscheme molokai
-else
-    colorscheme zenburn
-endif
+" color scheme setting should be the last config
+set background=dark
+colorscheme solarized

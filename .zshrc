@@ -1,15 +1,14 @@
-#  Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH
+# export PATH=$PATH:$HOME
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="agnoster"
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/loomars/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gnzh"
 
-# Don't show update prompt
-DISABLE_UPDATE_PROMPT=true
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -52,17 +51,16 @@ DISABLE_UPDATE_PROMPT=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump sudo httpie colored-man-pages)
-
-# User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+plugins=(sudo httpie git colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -76,22 +74,20 @@ export LC_ALL=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Aliases configuration
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -lrth'
 alias la='ls -lrtha'
 alias grep="grep --color=auto"
 alias vi='vim'
-alias mysql='/usr/local/mysql/bin/mysql'
-alias mysqladm='/usr/local/mysql/bin/mysqladmin'
-alias mysqld='/usr/local/mysql/bin/mysqld'
-# alias -s py=vim
 alias -s c=vim
 alias -s txt=vim
 alias -s gz='tar -xzvf'
@@ -101,9 +97,6 @@ alias -s bz2='tar -xjvf'
 alias -s jpg='imgcat'
 alias -s gif='imgcat'
 alias -s png='imgcat'
-
-# Other environment variables
-# export PROJECT_HOME=/home/marsloo/workspace
 export PROJECT_HOME=$HOME/learnspace
 export WORKON_HOME=$HOME/Envs
 if [ ! -d $PROJECT_HOME ]; then
@@ -112,8 +105,5 @@ fi
 if [ ! -d $WORKON_HOME ]; then
     mkdir -p $WORKON_HOME
 fi
+# Virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
